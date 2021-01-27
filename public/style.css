@@ -1,0 +1,38 @@
+#app {
+  background: url("./resources/bulletin-board-bg.jpg") ;
+  font-family: 'Architects Daughter', cursive;
+}
+
+.header {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+#app .header h1 {
+  font-family: 'Architects Daughter', cursive !important;
+  position: relative;
+}
+
+.signup-card {
+  background: url("./resources/signup-card.png") no-repeat;
+  background-size: cover;
+}
+
+.login-card {
+  background: url("./resources/login-card.png") no-repeat;
+  background-size: cover;
+}
+
+.item-card-1 {
+  background: url("./resources/item1.png") no-repeat;
+  background-size: cover;
+}
+
+.item-card-2 {
+  background: url("./resources/item2.png") no-repeat;
+  background-size: cover;
+}
+
+.item-card-3 {
+  background: url("./resources/item3.png") no-repeat;
+  background-size: cover;
+}
