@@ -7,19 +7,29 @@ Vue.use(VueRouter);
 import BulletinBoard from './components/BulletinBoard'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
-import {auth} from '../firebase'
+import { auth } from '../firebase'
 
 const routes = [
-  {path: '/bulletin-board', component: BulletinBoard},
-  {path: '/login', component: Login},
-  {path: '/signup', component: SignUp},
-] 
+  { path: '/bulletin-board', component: BulletinBoard },
+  { path: '/login', component: Login },
+  { path: '/signup', component: SignUp },
+]
 
 auth.onAuthStateChanged(user => {
-  if(user) {
-    router.push('./bulletin-board');
+  if (user) {
+    router.push('./bulletin-board').catch(
+      error => {
+        if (error.name != "NavigationDuplicated") {
+          throw error;
+        }
+      });
   } else {
-    router.push('./bulletin-board');
+    router.push('./bulletin-board').catch(
+      error => {
+        if (error.name != "NavigationDuplicated") {
+          throw error;
+        }
+      });
   }
 })
 
@@ -35,4 +45,3 @@ new Vue({
   router,
   render: h => h(App)
 }).$mount('#app')
- 

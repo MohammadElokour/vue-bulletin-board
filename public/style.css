@@ -1,6 +1,6 @@
 #app {
   background: url("./resources/bulletin-board-bg.jpg") ;
-  font-family: 'Architects Daughter', cursive;
+  font-family: 'Dekko';
 }
 
 .header {
@@ -10,6 +10,17 @@
 #app .header h1 {
   font-family: 'Architects Daughter', cursive !important;
   position: relative;
+}
+
+.custom-card {
+  min-width: 550px;
+  max-width: 600px !important;
+}
+
+.custom-card-shadow {
+  box-shadow: 0px 0px 0px 0px #0c1624,
+  -7px 40px 7px -43px #0c1624,
+  0px 40px 20px -35px #000 !important
 }
 
 .signup-card {

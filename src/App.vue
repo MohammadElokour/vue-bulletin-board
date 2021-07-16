@@ -34,7 +34,7 @@
 
     <v-main>
         <v-container v-if="showAddPost">
-          <v-card color="transparent" class="item-card-1 pa-7 mx-auto my-16 my-sm-7" height="auto" width="400px">
+          <v-card color="transparent" class="item-card-1 elevation-0 pa-7 mx-auto my-16 my-sm-7" height="auto" width="400px">
           <v-card-title class="justify-center pa-10">
             Add a Post
           </v-card-title>
@@ -55,6 +55,7 @@
 
 <script>
   import {auth, database} from '../firebase'
+  import firebase from "firebase";
 
   export default {
     name: 'App',
@@ -98,9 +99,9 @@
         auth.signOut();
       },
       addPost() {
-        this.post.userEmail = this.user.email
-        this.post.timeStamp = new Date(Date.now()).toLocaleString()
-        database.push(this.post);
+        this.post.userEmail = this.user.email;
+        this.post.timeStamp = firebase.firestore.FieldValue.serverTimestamp();
+        database.collection("posts").add(this.post);
         this.post.title = '';
         this.post.text = '';
         this.showAddPost = false;
@@ -117,7 +118,14 @@
           this.btnLable = 'Login'
         }
       },
+    },
+
+    filters: {
+      // formatDate(value) {
+      //   if (value) {
+      //     return moment(String(value)).format('MM/DD/YYYY hh:mm')
+      //   }
+      // }  
     }
-    
-  };
+  }
 </script>

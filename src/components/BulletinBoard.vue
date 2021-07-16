@@ -12,20 +12,22 @@
 
 <script>
 import BoardItem from './BoardItem.vue'
-import {database} from '../../firebase'
+import { database } from '../../firebase'
   export default {
     components: { BoardItem },
     data: () => ({
       posts: []
     }),
+
     mounted() {
-      database.on('value', snap => {
-        let posts = []
-        snap.forEach(post => {
-          posts.unshift(post.val())
-        })
-        this.posts = posts
-      })
+      let snapshot = database.collection("posts").orderBy('timeStamp');
+      snapshot.onSnapshot((snap) => {
+        let posts = [];
+        snap.forEach((post) => {
+          posts.unshift({...post.data(), id: post.id});
+        });
+        this.posts = posts;
+      });
     }
   }
 </script>

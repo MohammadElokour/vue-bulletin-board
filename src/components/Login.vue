@@ -1,9 +1,9 @@
 <template>
   <v-container fill-height="fill-height">
     <v-layout align-center="align-center" justify-center="justify-center">
-      <v-card color="transparent" class="login-card" width="550px">
+      <v-card color="transparent" class="custom-card custom-card-shadow login-card">
         <v-card-title class="justify-center pt-10 pb-0" style="font-size:1rem">
-          <p class="text-center mt-10 mb-1 red--text mx-5">{{error.message}}</p>
+          <p class="text-center mt-10 mb-1 red--text mx-5 text-break">{{error.message}}</p>
         </v-card-title>
         <v-card-text>
           <v-form class="px-5">
